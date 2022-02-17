@@ -23,7 +23,7 @@
     /* color */
     --clr-very-dark-grey:hsl(0, 0%, 17%);
     --clr-dark-grey:hsl(0, 0%, 59%);
-    --clr-white:white;
+    --clr-white:#ffff;
     --clr-black:black;
 
     /* font */
@@ -33,7 +33,7 @@
     --fw-bold:900;
     
     --fs-h1: 2rem;
-    --fs-h2:2.25rem;
+    --fs-h2:1.5rem;
     --fs-h3:1.25rem;
     --fs-body:1rem;
 
@@ -53,7 +53,7 @@
 
 
 body{
-    min-height: 100vw;
+    height: 100vw;
     font-family: var(--ff-primary);
 }
 
@@ -63,21 +63,129 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    
 }
 
 .header-section{
     width: 100%;
-    height: 20rem;
+    height: 17rem;
     background-image: url(./images/pattern-bg.png);
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     display: flex;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     flex-direction: column;
 }
 
 .header-section h1{
     color: var(--clr-white);
     font-size: var(--fs-h1);
+    margin: 1rem 0;
 }
+
+
+/* seacrh */
+.search-form {
+    
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    
+  }
+  .input-search {
+    cursor: pointer;
+    /* width: 20rem; */
+    width: 29rem;
+    border-color: transparent;
+    border-radius: 15px 0 0 15px;
+  }
+  
+  .input-search::placeholder {
+    font-size: 1.1rem;
+  }
+  .input-search[type="text"] {
+    font-size: 18px;
+    padding: 1.1rem;
+    font-weight: 400;
+  }
+  
+  .search-form button {
+    border-color: transparent;
+    background-color: var(--clr-black);
+    color: var(--clr-white);
+    padding: 1rem;
+    border-radius: 0 15px 15px 0;
+    cursor: pointer;
+  }
+  
+  .fa-angle-right {
+    font-size: 1.5rem;
+    color: var(--white);
+  }
+
+/* end of search */
+
+  
+/* coord results */
+
+.localisation-information{
+    position: absolute;
+    z-index: 1;
+    top: 12rem;
+    width: 60%;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 10rem;
+    background: var(--clr-white);
+    border-radius: 15px;
+    color: var(--clr-black);
+}
+
+hr {
+    height: 60%;
+    color: var(--clr-black);
+    opacity: 0.15;
+
+  }
+
+.localisation-information h2{
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 1.75px;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-bottom: 1rem;
+}
+
+.localisation-information p{
+   font-size: var(--fs-h2);
+   font-weight: bold;
+}
+
+
+/**  Map Section **/
+.map-section {
+  position: relative;
+  width: 100%;
+  height: 40rem;
+  z-index: 0;
+}
+
+#map {
+  height: 80rem;
+}
+
+footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+
+

@@ -13,6 +13,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
+  <!-- leaflet js map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+
+
   <!-- css -->
   <link rel="stylesheet" href="style.css">
 
@@ -26,39 +32,49 @@
     <h1>IP Address Tracker</h1>
     <form method="get" class="search-form">
       <input type="text" placeholder="Search for any IP address or domain" required class="input-search">
-      <button type="submit">
+      <button type="submit" >
         <i class="fa-solid fa-angle-right"></i>
       </button>
     </form>
   </header>
 
 
-  <section class="location-information">
-    <div class="ip-adress">
+  <section class="localisation-information">
+
+    <article class="ip-adress">
       <h2 class="ip-title">
         IP Address
       </h2>
       <p class="ip-coord">
         192.212.174.101
       </p>
-    </div>
-    <div class="location">
-      <h2 class="location-title">
-        Location
+    </article>
+
+    <hr>
+
+    <article class="localisation">
+      <h2 class="localisation-title">
+        localisation
       </h2>
-      <p class="location-coord">
+      <p class="localisation-coord">
         Brooklyn, NY 10001
       </p>
-    </div>
-    <div class="timezone">
+    </article>
+
+    <hr>
+
+    <article class="timezone">
       <h2 class="timezone-title">
         Timezone
       </h2>
       <p class="timezone-coord">
         UTC-05:00
       </p>
-    </div>
-    <div class="isp">
+    </article>
+    
+    <hr>
+
+    <article class="isp">
       <h2 class="isp-title">
         ISP
       </h2>
@@ -66,7 +82,7 @@
         SpaceX<br>
         Starlink
       </p>
-    </div>
+    </article>
 
   </section>
 
@@ -76,19 +92,33 @@
   </section>
 
 </main>
+
+
   <!-- 
 
   
 
   IP Address
-  Location
+  localisation
   Timezone
     UTC 
   ISP -->
   
-  <div class="attribution">
+  <footer class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
+    Coded by <a href="#">Alex Dev</a>.
+  </footer>
+
+
 </body>
+
+
+
+   <!-- Make sure you put this AFTER Leaflet's CSS -->
+ <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+ integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+ crossorigin=""></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script type='module' src='config.js'></script>
+ <script src="app.js"></script>
 </html>
