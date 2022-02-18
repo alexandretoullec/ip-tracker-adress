@@ -1,4 +1,4 @@
-const button = document.querySelector('button')
+const subBtn = document.querySelector('button')
 
 const inputValue = document.querySelector('.input-search');
 
@@ -8,11 +8,13 @@ const timeZone = document.querySelector('.timezone-coord');
 const isp = document.querySelector('.isp-coord');
 
 
-// map
+// IP adress 
+let apiKey = "d831ff40-900d-11ec-8f0f-e35fdbc72bb5";
 
 
+let url = "https://api.freegeoip.app/json/?apikey="+apiKey
 
-
+//show map
 
 let map = L.map('map').setView([51.505, -0.09], 13);
 
@@ -21,59 +23,67 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 }).addTo(map);
 
-// console.log(map);
-
-// end of map
-
-// IP adress 
-let apiKey = "d831ff40-900d-11ec-8f0f-e35fdbc72bb5"
-// let apiKey = "at_xrM6Dtkk8WBPjfpZJuIBipKnQiWVY"
-let url = "https://api.freegeoip.app/json/?apikey="+apiKey
 
 
 const apiFunc = function init() {
     $.getJSON(url, function (response) {
-        // console.log(ip);
-
+               
         // recup key values
-       let ipAdress = response.ip;
-       let timeZoneResp = response.time_zone;
+        let ipAdress = response.ip;
+        let timeZoneResp = response.time_zone;
         let countryLocation = response.country_name;
         let cityLocation = response.city;
         let postalCode = response.zip_code;
-        let ispResp = "Unavailable";
+        let ispResp = "Not yet implanted";
         let lat = response.latitude;
         let lng = response.longitude;
        
-
         // put recup values in HTML
-        console.log(timeZone, ipAdress);
-        loc.innerText=`${countryLocation}, ${cityLocation} ${postalCode}`;
         ipAdree.innerText=ipAdress;
+        loc.innerText=`${countryLocation}, ${cityLocation} ${postalCode}`;
         timeZone.innerText= `UTC ${timeZoneResp}`;
         isp.innerText=ispResp
-
-
-        // display on map
-
-        const mapLocation = () => {
-            var markerIcon = L.icon({
-              iconUrl: "images/icon-location.svg",
       
-              iconSize: [46, 56], // size of the icon
-              iconAnchor: [23, 55], // point of the icon which will correspond to marker's location
-            });
-            map.setView([lat, lng], 17);
-      
-            L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-              attribution: false,
-            }).addTo(map);
-      
-            L.marker([lat, lng], { icon: markerIcon }).addTo(map);
-          };
-          mapLocation();
+        // marker making
+        let iconMap = L.icon({
+        iconUrl:"images/icon-location.svg",
+        iconSize:     [35, 50], // size of the icon
+        })
 
+        // center icon
+        map.setView([lat, lng]);
+          
+        // set marker on the map
+        L.marker([lat, lng],{icon: iconMap}).addTo(map)
+        .bindPopup('Here you are!!!')
+        .openPopup();
+        
+        
+        
+        // search and validate IP
+
+        const regEx = /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/;
+
+        subBtn.addEventListener('click',(e)=>{
+          e.preventDefault();
+          // console.log("clicked");
+          if(!inputValue.value.match(regEx)){
+            // console.log("match");
+            alert("please, enter a valid IP adress")
+
+          }else{
+            let ipInput = inputValue.value;
+            url = "https://api.freegeoip.app/json/"+ipInput+"?apikey="+apiKey;
+            return apiFunc()
+          }
+        })
+
+        
     })
 }
+
+
+
+
 
 apiFunc();
