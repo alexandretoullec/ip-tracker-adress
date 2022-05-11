@@ -195,6 +195,7 @@ footer{
   .localisation-information{
     flex-direction: column;
     height: 20rem;
+    width: 24rem;
   }
 
 

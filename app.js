@@ -1,18 +1,16 @@
+// Dom elements
 const subBtn = document.querySelector('button')
-
 const inputValue = document.querySelector('.input-search');
-
 const loc = document.querySelector('.localisation-coord');
 const ipAdree = document.querySelector('.ip-coord');
 const timeZone = document.querySelector('.timezone-coord');
 const isp = document.querySelector('.isp-coord');
 
 
-// IP adress 
-let apiKey = "d831ff40-900d-11ec-8f0f-e35fdbc72bb5";
+// IP adress and API from ipinfo.com
 
+let url = "https://ipinfo.io/json?token=aa78bd10781816"
 
-let url = "https://api.freegeoip.app/json/?apikey="+apiKey
 
 //show map
 
@@ -30,14 +28,18 @@ const apiFunc = function init() {
                
         // recup key values
         let ipAdress = response.ip;
-        let timeZoneResp = response.time_zone;
-        let countryLocation = response.country_name;
+        let timeZoneResp = response.timezone;
+        let countryLocation = response.country;
         let cityLocation = response.city;
-        let postalCode = response.zip_code;
+        let postalCode = response.postal;
         let ispResp = "Not yet implanted";
-        let lat = response.latitude;
-        let lng = response.longitude;
-       
+        let position = response.loc.split(",");
+        
+        
+        let lat = parseFloat(position[0]);
+        let lng = parseFloat(position[1]);
+               
+        
         // put recup values in HTML
         ipAdree.innerText=ipAdress;
         loc.innerText=`${countryLocation}, ${cityLocation} ${postalCode}`;
@@ -73,17 +75,14 @@ const apiFunc = function init() {
 
           }else{
             let ipInput = inputValue.value;
-            url = "https://api.freegeoip.app/json/"+ipInput+"?apikey="+apiKey;
+            
+            url= "https://ipinfo.io/"+ipInput+"?token=aa78bd10781816"
+            
+            
             return apiFunc()
           }
         })
-
-        
     })
 }
-
-
-
-
 
 apiFunc();

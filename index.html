@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   
-  <title>Frontend Mentor | IP Address Tracker</title>
+  
+  <title>IP Address Tracker</title>
 
   <!-- font -->
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
@@ -41,40 +41,40 @@
 
   <section class="localisation-information">
 
-    <article class="ip-adress">
+    <div class="ip-adress">
       <h2 class="ip-title">
         IP Address
       </h2>
       <p class="ip-coord">
         192.212.174.101
       </p>
-    </article>
+    </div>
 
     <hr>
 
-    <article class="localisation">
+    <div class="localisation">
       <h2 class="localisation-title">
         localisation
       </h2>
       <p class="localisation-coord">
         Brooklyn, NY 10001
       </p>
-    </article>
+    </div>
 
     <hr>
 
-    <article class="timezone">
+    <div class="timezone">
       <h2 class="timezone-title">
         Timezone
       </h2>
       <p class="timezone-coord">
         UTC-05:00
       </p>
-    </article>
+    </div>
     
     <hr>
 
-    <article class="isp">
+    <div class="isp">
       <h2 class="isp-title">
         ISP
       </h2>
@@ -82,7 +82,7 @@
         SpaceX<br>
         Starlink
       </p>
-    </article>
+    </div>
 
   </section>
 
@@ -94,14 +94,15 @@
 </main>
 
   <footer class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    <!-- Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.  -->
     Coded by <a href="#">Alex Dev</a>.
   </footer>
 
 
 </body>
 
-
+  <!-- Axios CDN to recover client IP -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
    <!-- Make sure you put this AFTER Leaflet's CSS -->
  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
