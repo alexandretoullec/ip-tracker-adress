@@ -32,10 +32,7 @@ const apiFunc = function init() {
         let countryLocation = response.country;
         let cityLocation = response.city;
         let postalCode = response.postal;
-        let ispResp = "Not yet implanted";
         let position = response.loc.split(",");
-        
-        
         let lat = parseFloat(position[0]);
         let lng = parseFloat(position[1]);
                
@@ -44,8 +41,7 @@ const apiFunc = function init() {
         ipAdree.innerText=ipAdress;
         loc.innerText=`${countryLocation}, ${cityLocation} ${postalCode}`;
         timeZone.innerText= `UTC ${timeZoneResp}`;
-        isp.innerText=ispResp
-      
+              
         // marker making
         let iconMap = L.icon({
         iconUrl:"images/icon-location.svg",
@@ -68,9 +64,9 @@ const apiFunc = function init() {
 
         subBtn.addEventListener('click',(e)=>{
           e.preventDefault();
-          // console.log("clicked");
+          
           if(!inputValue.value.match(regEx)){
-            // console.log("match");
+            
             alert("please, enter a valid IP adress")
 
           }else{
